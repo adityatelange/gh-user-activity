@@ -2,6 +2,7 @@ import { SetGhPatKeyService } from './../services/set-gh-pat-key.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
   key: string = this.SetGhPatKeyService.get_pat();
   form: FormGroup
-  constructor(public dialog: MatDialog, public SetGhPatKeyService: SetGhPatKeyService) { }
+
+  constructor(public dialog: MatDialog, public SetGhPatKeyService: SetGhPatKeyService, private userService: UserService,) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
