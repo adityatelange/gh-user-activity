@@ -1,3 +1,4 @@
+import { SetGhPatKeyService } from './../services/set-gh-pat-key.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -7,8 +8,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  key: string
-  constructor(public dialog: MatDialog) { }
+  key: string = this.SetGhPatKeyService.get_pat();
+  constructor(public dialog: MatDialog, public SetGhPatKeyService: SetGhPatKeyService) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.key = result
-          console.log(this.key);
+          this.SetGhPatKeyService.set_pat(this.key);
         }
       });
     }
