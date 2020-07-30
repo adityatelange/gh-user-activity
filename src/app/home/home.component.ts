@@ -14,14 +14,16 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(KeyDialogComponent, {
-      width: '250px',
-      data: { key: this.key }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.key = result
-      console.log(this.key);
-    });
+    if (this.dialog.openDialogs.length == 0) {
+      const dialogRef = this.dialog.open(KeyDialogComponent, {
+        width: '250px',
+        data: { key: this.key }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.key = result
+        console.log(this.key);
+      });
+    }
   }
 }
 
