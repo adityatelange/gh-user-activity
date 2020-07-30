@@ -1,11 +1,13 @@
-<h2 mat-dialog-title>Github Personal Access Token</h2>
-<mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Enter Key</mat-label>
-    <input matInput placeholder="ex. 4a68631afb82baladf9c49892e0e3c82eaalef66" [(ngModel)]="data.key">
-  </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="data.key" cdkFocusInitial>Save</button>
-</mat-dialog-actions>
+<form>
+  <h2 mat-dialog-title>Github Personal Access Token</h2>
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Enter Key</mat-label>
+      <input matInput placeholder="ex. 4a68631afb82baladf9c49892e0e3c82eaalef66" [(ngModel)]="data.key" name="pat">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit" [mat-dialog-close]="data.key" cdkFocusInitial>Save</button>
+  </mat-dialog-actions>
+</form>
