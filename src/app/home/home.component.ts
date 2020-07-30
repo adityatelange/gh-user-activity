@@ -20,8 +20,10 @@ export class HomeComponent implements OnInit {
         data: { key: this.key }
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.key = result
-        console.log(this.key);
+        if (result) {
+          this.key = result
+          console.log(this.key);
+        }
       });
     }
   }
