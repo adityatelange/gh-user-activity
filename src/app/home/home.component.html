@@ -7,9 +7,14 @@
     </button>
   </mat-toolbar>
   <mat-card>
-    <mat-form-field class="form">
-      <mat-label>Username</mat-label>
-      <input matInput type="text" placeholder="Ex. torvalds">
-    </mat-form-field>
+    <form [formGroup]='form' (submit)="onSubmit()">
+      <mat-form-field class="form">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" placeholder="Ex. torvalds" formControlName="username">
+        <mat-error *ngIf="form.get('username').invalid">Fill in the Username</mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit">Submit </button>
+    </form>
   </mat-card>
 </div>

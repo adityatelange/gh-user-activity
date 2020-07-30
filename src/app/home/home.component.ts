@@ -1,6 +1,7 @@
 import { SetGhPatKeyService } from './../services/set-gh-pat-key.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,13 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class HomeComponent implements OnInit {
   key: string = this.SetGhPatKeyService.get_pat();
+  form: FormGroup
   constructor(public dialog: MatDialog, public SetGhPatKeyService: SetGhPatKeyService) { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      username: new FormControl(null, { validators: [Validators.required] }),
+    })
   }
 
   openDialog() {
@@ -27,6 +32,13 @@ export class HomeComponent implements OnInit {
         }
       });
     }
+  }
+
+  onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+    console.log(this.form.value.username);
   }
 }
 
