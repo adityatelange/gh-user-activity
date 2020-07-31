@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   key: string = this.SetGhPatKeyService.get_pat();
   form: FormGroup
   userEvents
+  userReceivedEvents
   constructor(public dialog: MatDialog, public SetGhPatKeyService: SetGhPatKeyService, private userService: UserService,) { }
 
   ngOnInit(): void {
@@ -45,6 +46,12 @@ export class HomeComponent implements OnInit {
     this.userService.getUserEvents(username).
       then((userEvents) => {
         this.userEvents = userEvents;
+      }).catch((err) => {
+        console.log(err);
+      });
+    this.userService.getUserReceivedEvents(username).
+      then((userReceivedEvents) => {
+        this.userReceivedEvents = userReceivedEvents;
       }).catch((err) => {
         console.log(err);
       });

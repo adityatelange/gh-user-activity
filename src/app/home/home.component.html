@@ -17,11 +17,11 @@
       <button mat-raised-button type="submit">Submit </button>
     </form>
   </mat-card>
-  <mat-card *ngIf="userEvents">
+  <mat-card *ngIf="userEvents && userReceivedEvents">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab>
         <ng-template mat-tab-label>
-          Events
+          Events Created
         </ng-template>
         <mat-accordion *ngFor="let event of userEvents">
           <mat-expansion-panel>
@@ -67,6 +67,55 @@
         </mat-accordion>
       </mat-tab>
       <!-- ------------------------------------------------------ -->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Events Received
+        </ng-template>
+        <mat-accordion *ngFor="let receivedevent of userReceivedEvents">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>{{ receivedevent.type }}</b> &nbsp;[{{receivedevent.created_at}}]
+              </mat-panel-title>
+              <mat-panel-description>
+                {{ receivedevent.repo.name }} by &nbsp;
+                <a href="https://github.com/{{ receivedevent.actor.login }}">
+                  {{ receivedevent.actor.login }}
+                </a>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div *ngIf="receivedevent.type == 'CommitCommentEvent'"></div>
+            <div *ngIf="receivedevent.type == 'CreateEvent'"></div>
+            <div *ngIf="receivedevent.type == 'DeleteEvent'"></div>
+            <div *ngIf="receivedevent.type == 'ForkEvent'"></div>
+            <div *ngIf="receivedevent.type == 'GollumEvent'"></div>
+            <div *ngIf="receivedevent.type == 'IssueCommentEvent'"></div>
+            <div *ngIf="receivedevent.type == 'IssuesEvent'"></div>
+            <div *ngIf="receivedevent.type == 'MemberEvent'"></div>
+
+            <div *ngIf="receivedevent.type == 'PublicEvent'"></div>
+            <div *ngIf="receivedevent.type == 'PullRequestEvent'"></div>
+            <div *ngIf="
+                            receivedevent.type == 'PullRequestReviewCommentEvent'
+                          "></div>
+            <div *ngIf="receivedevent.type == 'PushEvent'">
+              <p>
+                <mat-list *ngFor="let commitreceived of receivedevent.payload.commits">
+                  <mat-divider></mat-divider>
+                  <mat-list-item>
+                    <a href="{{ commitreceived.url }}">{{commitreceived.message}}</a>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                </mat-list>
+              </p>
+            </div>
+            <div *ngIf="receivedevent.type == 'ReleaseEvent'"></div>
+            <div *ngIf="receivedevent.type == 'SponsorshipEvent'"></div>
+            <div *ngIf="receivedevent.type == 'WatchEvent'"></div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
     </mat-tab-group>
   </mat-card>
 </div>

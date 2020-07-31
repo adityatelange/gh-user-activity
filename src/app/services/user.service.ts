@@ -15,4 +15,10 @@ export class UserService {
       .get(`${this.BACKEND_URL}/${username}/events`)
       .toPromise();
   }
+
+  async getUserReceivedEvents(username: string) {
+    return this.http
+      .get(`${this.BACKEND_URL}/${username}/received_events`)
+      .toPromise();
+  }
 }
