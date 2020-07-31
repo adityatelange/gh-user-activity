@@ -12,12 +12,16 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const ghPAT = this.SetGhPatKeyService.get_pat();
-    const authReq = req.clone({
-      headers: req.headers.set(
-        'Authorization',
-        `token ${ghPAT}`
-      ),
-    });
-    return next.handle(authReq);
+    if (ghPAT) {
+      const authReq = req.clone({
+        headers: req.headers.set(
+          'Authorization',
+          `token ${ghPAT}`
+        ),
+      });
+      return next.handle(authReq);
+    } else {
+      return next.handle(req);
+    }
   }
 }
