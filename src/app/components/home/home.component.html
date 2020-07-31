@@ -19,7 +19,22 @@
         <ng-template mat-tab-label *ngIf="type == userReceivedEvents">
           Events Received
         </ng-template>
-        <mat-accordion multi>
+        <div *ngIf="type.length == 0">
+          <mat-card align="center">
+            <mat-card-title>
+              <mat-icon aria-hidden="false" aria-label="user events icon">
+                notes
+              </mat-icon>
+            </mat-card-title>
+            <mat-card-subtitle *ngIf="type == userEvents">
+              {{ username }} haven't Created any Events yet.
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="type == userReceivedEvents">
+              {{ username }} haven't Received any Events yet.
+            </mat-card-subtitle>
+          </mat-card>
+        </div>
+        <mat-accordion multi *ngIf="type.length != 0">
           <mat-expansion-panel *ngFor="let event of type">
             <mat-expansion-panel-header [collapsedHeight]="'60px'" [expandedHeight]="'65px'">
               <mat-panel-title>

@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   form: FormGroup
   userEvents
   userReceivedEvents
+  username
   constructor(private userService: UserService,) { }
 
   ngOnInit(): void {
@@ -24,14 +25,14 @@ export class HomeComponent implements OnInit {
       return;
     }
     console.log(this.form.value.username);
-    let username = this.form.value.username;
-    this.userService.getUserEvents(username).
+    this.username = this.form.value.username;
+    this.userService.getUserEvents(this.username).
       then((userEvents) => {
         this.userEvents = userEvents;
       }).catch((err) => {
         console.log(err);
       });
-    this.userService.getUserReceivedEvents(username).
+    this.userService.getUserReceivedEvents(this.username).
       then((userReceivedEvents) => {
         this.userReceivedEvents = userReceivedEvents;
       }).catch((err) => {
