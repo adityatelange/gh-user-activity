@@ -11,3 +11,13 @@ mat-card {
 .toolbar-spacer {
   flex: 1 1 auto;
 }
+
+mat-toolbar {
+  background: black;
+  color: white;
+}
+
+mat-toolbar a {
+  text-decoration: none;
+  color: white;
+}
