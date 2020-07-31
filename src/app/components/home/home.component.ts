@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   userEvents
   userReceivedEvents
   username
+  isLoadingSpinneruserEvents = false
+  isLoadingSpinneruserReceivedEvents = false
   constructor(private userService: UserService,
     private _snackBar: MatSnackBar) { }
 
@@ -26,20 +28,25 @@ export class HomeComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.isLoadingSpinneruserEvents = this.isLoadingSpinneruserReceivedEvents = true
     console.log(this.form.value.username);
     this.username = this.form.value.username;
     this.userService.getUserEvents(this.username).
       then((userEvents) => {
         this.userEvents = userEvents;
+        this.isLoadingSpinneruserEvents = false
       }).catch((err) => {
         console.log(err);
+        this.isLoadingSpinneruserEvents = false
         this.openSnackBar(err.error.message)
       });
     this.userService.getUserReceivedEvents(this.username).
       then((userReceivedEvents) => {
         this.userReceivedEvents = userReceivedEvents;
+        this.isLoadingSpinneruserReceivedEvents = false
       }).catch((err) => {
         console.log(err.status);
+        this.isLoadingSpinneruserReceivedEvents = false
         this.openSnackBar(err.error.message)
       });
   }

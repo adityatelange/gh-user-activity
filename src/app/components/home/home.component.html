@@ -10,7 +10,10 @@
       <button mat-raised-button type="submit">Submit </button>
     </form>
   </mat-card>
-  <div class="EventBox" *ngIf="userEvents && userReceivedEvents">
+  <mat-spinner *ngIf="isLoadingSpinneruserEvents || isLoadingSpinneruserReceivedEvents"></mat-spinner>
+
+  <div class="EventBox"
+    *ngIf="userEvents && userReceivedEvents && isLoadingSpinneruserEvents == false && isLoadingSpinneruserReceivedEvents == false">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab *ngFor="let type of [userEvents, userReceivedEvents]">
         <ng-template mat-tab-label *ngIf="type == userEvents">

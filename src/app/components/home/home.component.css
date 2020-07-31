@@ -1,4 +1,3 @@
-
 /* Mobile First Media Queries */
 
 /* Base style */
@@ -13,6 +12,10 @@ mat-card {
 
 .form {
   width: 80%;
+}
+
+mat-spinner {
+  margin: auto;
 }
 
 
