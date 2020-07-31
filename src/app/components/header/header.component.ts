@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UserService } from '../services/user.service';
-import { SetGhPatKeyService } from '../services/set-gh-pat-key.service'
+import { UserService } from '../../services/user.service';
+import { SetGhPatKeyService } from '../../services/set-gh-pat-key.service'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
