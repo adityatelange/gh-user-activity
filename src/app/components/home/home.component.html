@@ -66,7 +66,16 @@
                   title="{{event.payload.comment.body}}">{{event.payload.comment.body | slice:0:70}}{{event.payload.comment.body < 70 ? '' : '...'}}</a>
               </mat-list-item>
             </div>
-            <div *ngIf="event.type == 'CreateEvent'"></div>
+            <div *ngIf="event.type == 'CreateEvent'">
+              <mat-list-item>
+                <a href="https://github.com/{{ event.actor.login }}">
+                  {{ event.actor.login }}
+                </a>&nbsp;
+                Created&nbsp;
+                <a href="https://github.com/{{event.repo.name}}"
+                  title="{{event.repo.name}}">{{event.repo.name | slice:0:70}}{{event.repo.name < 70 ? '' : '...'}}</a>
+              </mat-list-item>
+            </div>
             <div *ngIf="event.type == 'DeleteEvent'"></div>
             <div *ngIf="event.type == 'ForkEvent'"></div>
             <div *ngIf="event.type == 'GollumEvent'"></div>
