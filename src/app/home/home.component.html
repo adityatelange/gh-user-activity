@@ -17,7 +17,7 @@
       <button mat-raised-button type="submit">Submit </button>
     </form>
   </mat-card>
-  <mat-card *ngIf="userEvents && userReceivedEvents">
+  <div class="EventBox" *ngIf="userEvents && userReceivedEvents">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab *ngFor="let type of [userEvents, userReceivedEvents]">
         <ng-template mat-tab-label *ngIf="type == userEvents">
@@ -28,17 +28,22 @@
         </ng-template>
         <mat-accordion multi>
           <mat-expansion-panel *ngFor="let event of type">
-            <mat-expansion-panel-header>
+            <mat-expansion-panel-header [collapsedHeight]="'60px'" [expandedHeight]="'65px'">
               <mat-panel-title>
-                <b>{{ event.type }}</b> &nbsp;[{{ event.created_at }}]
+                <b>{{ event.type }}</b>
               </mat-panel-title>
               <mat-panel-description>
-                {{ event.repo.name }} by &nbsp;
-                <a href="https://github.com/{{ event.actor.login }}">
-                  {{ event.actor.login }}
-                </a>
+                {{ event.repo.name }}
               </mat-panel-description>
             </mat-expansion-panel-header>
+            <!-- primary content of the panel. -->
+
+            <h3 align="center">@ {{ event.created_at }}
+              by
+              <a href="https://github.com/{{ event.actor.login }}">
+                {{ event.actor.login }}
+              </a>
+            </h3>
 
             <div *ngIf="event.type == 'CommitCommentEvent'"></div>
             <div *ngIf="event.type == 'CreateEvent'"></div>
@@ -67,7 +72,7 @@
         </mat-accordion>
       </mat-tab>
     </mat-tab-group>
-  </mat-card>
+  </div>
   <mat-toolbar>
     <span>Footer</span>
   </mat-toolbar>

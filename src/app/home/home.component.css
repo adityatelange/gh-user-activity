@@ -1,16 +1,3 @@
-mat-card {
-  text-align: center;
-}
-
-.form {
-  width: 60%;
-}
-
-
-/* Mobile First Media Queries */
-
-/* Base style */
-
 .toolbar-spacer {
   flex: 1 1 auto;
 }
@@ -26,6 +13,23 @@ mat-toolbar a {
 }
 
 
+/* Mobile First Media Queries */
+
+/* Base style */
+mat-card {
+  text-align: center;
+  margin: 20px 10px;
+}
+
+.EventBox {
+  margin: 50px 5px;
+}
+
+.form {
+  width: 80%;
+}
+
+
 /* Larger than mobile screen */
 @media (min-width: 40.0rem) {}
 
@@ -36,5 +40,10 @@ mat-toolbar a {
 @media (min-width: 120.0rem) {
   mat-card {
     text-align: center;
+    margin: 20px 500px;
+  }
+
+  .EventBox {
+    margin: 50px 400px;
   }
 }
