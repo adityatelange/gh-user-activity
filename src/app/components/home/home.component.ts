@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.userEvents = this.userReceivedEvents = null
     this.isLoadingSpinneruserEvents = this.isLoadingSpinneruserReceivedEvents = true
     console.log(this.form.value.username);
     this.username = this.form.value.username;
