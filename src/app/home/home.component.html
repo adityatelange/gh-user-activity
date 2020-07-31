@@ -23,8 +23,8 @@
         <ng-template mat-tab-label>
           Events Created
         </ng-template>
-        <mat-accordion *ngFor="let event of userEvents">
-          <mat-expansion-panel>
+        <mat-accordion multi>
+          <mat-expansion-panel *ngFor="let event of userEvents">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <b>{{ event.type }}</b> &nbsp;[{{ event.created_at }}]
@@ -71,8 +71,8 @@
         <ng-template mat-tab-label>
           Events Received
         </ng-template>
-        <mat-accordion *ngFor="let receivedevent of userReceivedEvents">
-          <mat-expansion-panel>
+        <mat-accordion multi>
+          <mat-expansion-panel *ngFor="let receivedevent of userReceivedEvents">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <b>{{ receivedevent.type }}</b> &nbsp;[{{receivedevent.created_at}}]
