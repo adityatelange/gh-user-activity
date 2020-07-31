@@ -1,12 +1,15 @@
 mat-card {
-  margin: 20px 100px;
-  padding: 20px 80px;
   text-align: center;
 }
 
 .form {
   width: 60%;
 }
+
+
+/* Mobile First Media Queries */
+
+/* Base style */
 
 .toolbar-spacer {
   flex: 1 1 auto;
@@ -20,4 +23,18 @@ mat-toolbar {
 mat-toolbar a {
   text-decoration: none;
   color: white;
+}
+
+
+/* Larger than mobile screen */
+@media (min-width: 40.0rem) {}
+
+/* Larger than tablet screen */
+@media (min-width: 80.0rem) {}
+
+/* Larger than desktop screen */
+@media (min-width: 120.0rem) {
+  mat-card {
+    text-align: center;
+  }
 }
