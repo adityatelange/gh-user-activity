@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { SetGhPatKeyService } from '../../services/set-gh-pat-key.service'
+import { KeyDialogComponent } from '../key-dialog/key-dialog.component'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,21 +32,4 @@ export class HeaderComponent implements OnInit {
     this.key = this.SetGhPatKeyService.get_pat();
   }
 
-}
-
-
-
-@Component({
-  selector: 'key-dialog',
-  templateUrl: './key-dialog.component.html',
-  styleUrls: ['./key-dialog.component.css']
-})
-export class KeyDialogComponent {
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private SetGhPatKeyService: SetGhPatKeyService) { }
-
-  deletePAT() {
-    this.SetGhPatKeyService.rm_pat()
-  }
 }

@@ -9,7 +9,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
-import { HeaderComponent, KeyDialogComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/header/header.component';
+import { KeyDialogComponent } from './components/key-dialog/key-dialog.component'
 
 @NgModule({
   declarations: [
