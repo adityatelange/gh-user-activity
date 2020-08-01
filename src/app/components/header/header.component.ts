@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   openDialog() {
     if (this.dialog.openDialogs.length == 0) {
       const dialogRef = this.dialog.open(KeyDialogComponent, {
-        width: '250px',
+        width: '350px',
         data: { key: this.key }
       });
       dialogRef.afterClosed().subscribe(result => {
@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
 @Component({
   selector: 'key-dialog',
   templateUrl: './key-dialog.component.html',
+  styleUrls: ['./key-dialog.component.css']
 })
 export class KeyDialogComponent {
   constructor(
