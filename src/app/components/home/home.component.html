@@ -55,7 +55,7 @@
                 {{ event.actor.login }}
               </a>
             </h3>
-
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'CommitCommentEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
@@ -66,6 +66,7 @@
                   title="{{event.payload.comment.body}}">{{event.payload.comment.body | slice:0:70}}{{event.payload.comment.body < 70 ? '' : '...'}}</a>
               </mat-list-item>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'CreateEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
@@ -76,7 +77,9 @@
                   title="{{event.repo.name}}">{{event.repo.name | slice:0:70}}{{event.repo.name < 70 ? '' : '...'}}</a>
               </mat-list-item>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'DeleteEvent'"></div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'ForkEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
@@ -89,8 +92,11 @@
                   title="{{event.payload.forkee.full_name}}">{{event.payload.forkee.full_name}}</a>
               </mat-list-item>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'GollumEvent'"></div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'IssueCommentEvent'"></div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'IssuesEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
@@ -101,9 +107,11 @@
                   title="{{event.payload.issue.title}}">{{event.payload.issue.title}}</a>
               </mat-list-item>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'MemberEvent'"></div>
-
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'PublicEvent'"></div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'PullRequestEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
@@ -114,6 +122,7 @@
                   title="{{event.payload.pull_request.title}}">{{event.payload.pull_request.title}}</a>
               </mat-list-item>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'PullRequestReviewCommentEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
@@ -127,6 +136,7 @@
                   title="{{event.payload.pull_request.title}}">{{event.payload.pull_request.title}}</a>
               </mat-list-item>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'PushEvent'">
               <mat-list *ngFor="let commit of event.payload.commits">
                 <mat-divider *ngIf="event.payload.commits.length >0"></mat-divider>
@@ -136,8 +146,11 @@
                 </mat-list-item>
               </mat-list>
             </div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'ReleaseEvent'"></div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'SponsorshipEvent'"></div>
+            <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'WatchEvent'">
               <mat-list>
                 <mat-divider></mat-divider>
