@@ -1,13 +1,15 @@
 <form>
   <h2 mat-dialog-title>Github Personal Access Token</h2>
   <mat-dialog-content>
-    <mat-form-field>
+    <mat-form-field *ngIf="!data.key">
       <mat-label>Enter Key</mat-label>
-      <input matInput placeholder="ex. 4a68631afb82baladf9c49892e0e3c82eaalef66" [(ngModel)]="data.key" name="pat">
+      <input matInput placeholder="ex. 4a68631afb82baladf9c49892e0e3c82eaalef66" [(ngModel)]="pat" name="pat">
     </mat-form-field>
+    <p *ngIf="data.key">{{data.key}}</p>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button type="submit" [mat-dialog-close]="data.key" cdkFocusInitial>Save</button>
+    <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+    <button mat-button type="submit" *ngIf="!data.key" [mat-dialog-close]="pat" cdkFocusInitial>Save</button>
+    <button mat-button type="submit" *ngIf="data.key" mat-dialog-close (click)="deletePAT()">Delete</button>
   </mat-dialog-actions>
 </form>

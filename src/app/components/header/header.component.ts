@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
         if (result) {
           this.key = result
           this.SetGhPatKeyService.set_pat(this.key);
+        } else {
+          this.key = this.SetGhPatKeyService.get_pat();
         }
       });
     }
@@ -40,5 +42,10 @@ export class HeaderComponent implements OnInit {
 })
 export class KeyDialogComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private SetGhPatKeyService: SetGhPatKeyService) { }
+
+  deletePAT() {
+    this.SetGhPatKeyService.rm_pat()
+  }
 }
