@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./key-dialog.component.css']
 })
 export class KeyDialogComponent {
+  hide = true;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private SetGhPatKeyService: SetGhPatKeyService) { }

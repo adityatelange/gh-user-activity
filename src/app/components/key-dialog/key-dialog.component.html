@@ -1,11 +1,17 @@
 <form>
   <h2 mat-dialog-title>Github Personal Access Token</h2>
   <mat-dialog-content>
-    <mat-form-field *ngIf="!data.key">
+    <mat-form-field *ngIf="!data.key" appearance="outline">
       <mat-label>Enter Key</mat-label>
       <input matInput placeholder="ex. 4a68631afb82baladf9c49892e0e3c82eaalef66" [(ngModel)]="pat" name="pat">
     </mat-form-field>
-    <p *ngIf="data.key">{{data.key}}</p>
+    <mat-form-field *ngIf="data.key" appearance="outline">
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="data.key" name="pat" readonly>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide PAT'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button *ngIf="!data.key" mat-button mat-dialog-close>Cancel</button>
