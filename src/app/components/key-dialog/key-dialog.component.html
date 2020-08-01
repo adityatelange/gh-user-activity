@@ -1,6 +1,15 @@
 <form>
   <h2 mat-dialog-title>Github Personal Access Token</h2>
   <mat-dialog-content>
+    Read More About this
+    <ul>
+      <li><a href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting">rate-limiting</a>
+      </li>
+      <li>
+        <a
+          href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">creating-a-personal-access-token</a>
+      </li>
+    </ul>
     <mat-form-field *ngIf="!data.key" appearance="outline">
       <mat-label>Enter Key</mat-label>
       <input matInput placeholder="ex. 4a68631afb82baladf9c49892e0e3c82eaalef66" [(ngModel)]="pat" name="pat">
