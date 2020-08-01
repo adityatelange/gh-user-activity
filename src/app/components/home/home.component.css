@@ -18,6 +18,12 @@ mat-spinner {
   margin: auto;
 }
 
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* Larger than mobile screen */
 @media (min-width: 40.0rem) {}
