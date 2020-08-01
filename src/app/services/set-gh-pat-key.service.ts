@@ -14,4 +14,8 @@ export class SetGhPatKeyService {
   set_pat(input_key: string) {
     localStorage.setItem('gh_pat', input_key)
   }
+
+  rm_pat() {
+    localStorage.removeItem('gh_pat')
+  }
 }
