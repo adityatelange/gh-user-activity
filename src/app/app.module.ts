@@ -11,6 +11,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { KeyDialogComponent } from './components/key-dialog/key-dialog.component'
+import { HelpDialogComponent } from './components/help-dialog/help-dialog.component'
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { KeyDialogComponent } from './components/key-dialog/key-dialog.component
     HomeComponent,
     HeaderComponent,
     KeyDialogComponent,
+    HelpDialogComponent
   ],
   imports: [
     BrowserModule,

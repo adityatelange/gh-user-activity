@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 import { SetGhPatKeyService } from '../../services/set-gh-pat-key.service'
 import { KeyDialogComponent } from '../key-dialog/key-dialog.component'
+import { HelpDialogComponent } from '../help-dialog/help-dialog.component'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -28,6 +29,13 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
+
+  helpDialog() {
+    if (this.dialog.openDialogs.length == 0) {
+      this.dialog.open(HelpDialogComponent);
+    }
+  }
+
   ngOnInit(): void {
     this.key = this.SetGhPatKeyService.get_pat();
   }
