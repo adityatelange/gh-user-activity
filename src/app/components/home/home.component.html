@@ -95,7 +95,16 @@
             <div *ngIf="event.type == 'MemberEvent'"></div>
 
             <div *ngIf="event.type == 'PublicEvent'"></div>
-            <div *ngIf="event.type == 'PullRequestEvent'"></div>
+            <div *ngIf="event.type == 'PullRequestEvent'">
+              <mat-list-item>
+                <a href="https://github.com/{{ event.actor.login }}">
+                  {{ event.actor.login }}
+                </a>&nbsp;
+                {{event.payload.action}}&nbsp;
+                <a href="{{event.payload.pull_request.html_url}}"
+                  title="{{event.payload.pull_request.title}}">{{event.payload.pull_request.title}}</a>
+              </mat-list-item>
+            </div>
             <div *ngIf="event.type == 'PullRequestReviewCommentEvent'">
               <mat-list-item>
                 <a href="https://github.com/{{ event.actor.login }}">
