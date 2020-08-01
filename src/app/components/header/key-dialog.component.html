@@ -8,7 +8,8 @@
     <p *ngIf="data.key">{{data.key}}</p>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+    <button *ngIf="!data.key" mat-button mat-dialog-close>Cancel</button>
+    <button *ngIf="data.key" mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
     <button mat-button type="submit" *ngIf="!data.key" [mat-dialog-close]="pat" cdkFocusInitial
       color="primary">Save</button>
     <button mat-button type="submit" *ngIf="data.key" mat-dialog-close (click)="deletePAT()"
