@@ -150,11 +150,12 @@
             </div>
             <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'PushEvent'">
-              <mat-list *ngFor="let commit of event.payload.commits">
-                <mat-divider *ngIf="event.payload.commits.length >0"></mat-divider>
-                <mat-list-item>
-                  <a href="{{ commit.url }}" title="{{ commit.message }}">{{ commit.message | slice:0:70 }}
-                    {{commit.message.length < 70 ? '' : '...'}}</a>
+              <mat-list role="list">
+                <h3>Commits</h3>
+                <mat-list-item role="listitem" *ngFor="let commit of event.payload.commits; last as last">
+                  <a class="line-clamp" href="https://github.com/{{event.repo.name}}/commit/{{ commit.sha }}"
+                    title="{{ commit.message }}">{{ commit.message}}</a>
+                  <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
                 </mat-list-item>
               </mat-list>
             </div>
