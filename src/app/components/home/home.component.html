@@ -77,7 +77,15 @@
               </mat-list-item>
             </div>
             <!-- -------------------------------------------------------------------- -->
-            <div *ngIf="event.type == 'DeleteEvent'"></div>
+            <div *ngIf="event.type == 'DeleteEvent'">
+              <mat-list-item>
+                <a href="https://github.com/{{ event.actor.login }}">
+                  {{ event.actor.login }}
+                </a>
+                &nbsp;deleted&nbsp;{{event.payload.ref_type}} {{event.payload.ref}} of
+                <a href="https://github.com/{{event.repo.name}}" title="{{event.repo.name}}">{{event.repo.name}}</a>
+              </mat-list-item>
+            </div>
             <!-- -------------------------------------------------------------------- -->
             <div *ngIf="event.type == 'ForkEvent'">
               <mat-list-item>
