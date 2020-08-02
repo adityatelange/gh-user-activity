@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private _elementRef: ElementRef) {
+  }
 
+  ngOnInit(): void {
+    this._elementRef.nativeElement.removeAttribute("ng-version");
+  }
 }
